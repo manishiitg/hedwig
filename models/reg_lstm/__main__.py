@@ -67,7 +67,7 @@ if __name__ == '__main__':
     np.random.seed(args.seed)
     random.seed(args.seed)
 
-    logger.inf("xys")
+    logger.info("xys")
 
     if not args.cuda:
         args.gpu = -1
