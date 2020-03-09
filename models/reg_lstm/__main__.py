@@ -35,6 +35,7 @@ class UnknownWordVecCache(object):
 
 def get_logger():
     logger = logging.getLogger(__name__)
+    logging.basicConfig()
     logger.setLevel(logging.DEBUG)
 
     ch = logging.StreamHandler(stream=sys.stdout)
