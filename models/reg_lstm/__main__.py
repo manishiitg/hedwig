@@ -12,7 +12,7 @@ from datasets.aapd import AAPD
 from datasets.imdb import IMDB
 from datasets.reuters import Reuters
 from datasets.yelp2014 import Yelp2014
-from datasets.custom import CUSTOM
+from datasets.custom import Custom
 from models.reg_lstm.args import get_args
 from models.reg_lstm.model import RegLSTM
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
         'AAPD': AAPD,
         'IMDB': IMDB,
         'Yelp2014': Yelp2014,
-        'CUSTOM' : CUSTOM
+        'Custom' : Custom
     }
 
     if args.dataset not in dataset_map:
