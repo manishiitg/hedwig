@@ -16,6 +16,7 @@ from datasets.custom import Custom
 from models.reg_lstm.args import get_args
 from models.reg_lstm.model import RegLSTM
 
+import sys
 
 class UnknownWordVecCache(object):
     """
