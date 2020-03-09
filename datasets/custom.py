@@ -9,6 +9,16 @@ from torchtext.vocab import Vectors
 from datasets.reuters import clean_string, split_sents, process_labels, generate_ngrams
 
 
+
+def char_quantize(string, max_length=500):
+    identity = np.identity(len(CustomCharQuantized.ALPHABET))
+    quantized_string = np.array([identity[CustomCharQuantized.ALPHABET[char]] for char in list(string.lower()) if char in IMDBCharQuantized.ALPHABET], dtype=np.float32)
+    if len(quantized_string) > max_length:
+        return quantized_string[:max_length]
+    else:
+        return np.concatenate((quantized_string, np.zeros((max_length - len(quantized_string), len(CustomCharQuantized.ALPHABET)), dtype=np.float32)))
+
+
 class Custom(TabularDataset):
     NAME = 'CUSTOM'
     NUM_CLASSES = 10
