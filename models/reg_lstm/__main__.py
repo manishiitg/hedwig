@@ -98,11 +98,13 @@ if __name__ == '__main__':
 
     config = deepcopy(args)
     config.dataset = train_iter.dataset
-    config.target_class = train_iter.dataset.NUM_CLASSES
+    # config.target_class = train_iter.dataset.NUM_CLASSES
+    config.target_class = args.target_class
     config.words_num = len(train_iter.dataset.TEXT_FIELD.vocab)
 
     print('Dataset:', args.dataset)
-    print('No. of target classes:', train_iter.dataset.NUM_CLASSES)
+    # print('No. of target classes:', train_iter.dataset.NUM_CLASSES)
+    print('No. of target classes:', args.target_class)
     print('No. of train instances', len(train_iter.dataset))
     print('No. of dev instances', len(dev_iter.dataset))
     print('No. of test instances', len(test_iter.dataset))

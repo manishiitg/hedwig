@@ -29,6 +29,7 @@ def get_args():
     parser.add_argument('--save-path', type=str, default=os.path.join('model_checkpoints', 'reg_lstm'))
     parser.add_argument('--resume-snapshot', type=str)
     parser.add_argument('--trained-model', type=str)
+    parser.add_argument('--target-classes', type=int, default=10)
 
     args = parser.parse_args()
     return args
