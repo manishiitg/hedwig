@@ -61,7 +61,7 @@ def evaluate_dataset(split_name, dataset_cls, model, embedding, loader, batch_si
 if __name__ == '__main__':
     # Set default configuration in args.py
     args = get_args()
-    logger = get_logger()
+    # logger = get_logger()
 
     # Set random seed for reproducibility
     torch.manual_seed(args.seed)
@@ -147,7 +147,7 @@ if __name__ == '__main__':
         'log_interval': args.log_every,
         'patience': args.patience,
         'model_outfile': args.save_path,
-        'logger': logger,
+        # 'logger': logger,
         'is_multilabel': dataset_class.IS_MULTILABEL
     }
 
