@@ -27,6 +27,7 @@ class CustomProcessor(BertProcessor):
             if i == 0:
                 continue
             guid = "%s-%s" % (set_type, i)
+            print(line)
             text_a = line[1]
             label = line[0]            
             examples.append(
