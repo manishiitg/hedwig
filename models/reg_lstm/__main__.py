@@ -59,6 +59,8 @@ def evaluate_dataset(split_name, dataset_cls, model, embedding, loader, batch_si
 
 
 if __name__ == '__main__':
+
+    print("starting")
     # Set default configuration in args.py
     args = get_args()
     # logger = get_logger()
@@ -113,7 +115,7 @@ if __name__ == '__main__':
     print('No. of dev instances', len(dev_iter.dataset))
     print('No. of test instances', len(test_iter.dataset))
 
-    return
+    
 
     if args.resume_snapshot:
         if args.cuda:
