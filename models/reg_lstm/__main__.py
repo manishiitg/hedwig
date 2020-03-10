@@ -63,6 +63,7 @@ if __name__ == '__main__':
     print("starting")
     # Set default configuration in args.py
     args = get_args()
+    print("starting")
     # logger = get_logger()
 
     # Set random seed for reproducibility
@@ -70,7 +71,7 @@ if __name__ == '__main__':
     torch.backends.cudnn.deterministic = True
     np.random.seed(args.seed)
     random.seed(args.seed)
-
+    print("starting")
     
 
     if not args.cuda:
@@ -82,6 +83,7 @@ if __name__ == '__main__':
     if torch.cuda.is_available() and not args.cuda:
         print('Warning: Using CPU for training')
 
+    print("starting")
     dataset_map = {
         'Reuters': Reuters,
         'AAPD': AAPD,
