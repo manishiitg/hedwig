@@ -59,10 +59,10 @@ class Custom(TabularDataset):
         print("loading vectors")        
         if vectors_name == "fasttext":
             vectors = FastText()
+        elif "B" in vectors_name:
+            vectors = GloVe(vectors_name)
         elif vectors is None:
             vectors = Vectors(name=vectors_name, cache=vectors_cache, unk_init=unk_init)
-        else:
-            vectors = GloVe(vectors_name)
 
         print("completed vectors loading")
         train, val, test = cls.splits(path)
