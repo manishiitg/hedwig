@@ -56,11 +56,11 @@ class Custom(TabularDataset):
         :return:
         """
 
-        print("loading vectors")
-        if "glove" in vectors_name:
-            vectors = GloVe('6B')
-        elif vectors_name == "fasttext":
+        print("loading vectors")        
+        if vectors_name == "fasttext":
             vectors = FastText()
+        elif:
+            vectors = GloVe(vectors_name)
         elif vectors is None:
             vectors = Vectors(name=vectors_name, cache=vectors_cache, unk_init=unk_init)
 
