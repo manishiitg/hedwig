@@ -95,6 +95,7 @@ class BertTrainer(object):
         padded_input_ids = torch.tensor(unpadded_input_ids, dtype=torch.long)
         padded_input_mask = torch.tensor(unpadded_input_mask, dtype=torch.long)
         padded_segment_ids = torch.tensor(unpadded_segment_ids, dtype=torch.long)
+        print(train_features)
         label_ids = torch.tensor([f.label_id for f in train_features], dtype=torch.long)
 
         train_data = TensorDataset(padded_input_ids, padded_input_mask, padded_segment_ids, label_ids)
