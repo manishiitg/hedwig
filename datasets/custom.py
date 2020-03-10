@@ -5,6 +5,8 @@ import torch
 from torchtext.data import NestedField, Field, TabularDataset
 from torchtext.data.iterator import BucketIterator
 from torchtext.vocab import Vectors
+from torchtext.vocab import GloVe
+from torchtext.vocab import FastText
 
 from datasets.reuters import clean_string, split_sents, process_labels, generate_ngrams
 
@@ -53,10 +55,18 @@ class Custom(TabularDataset):
         :param unk_init: function used to generate vector for OOV words
         :return:
         """
-        if vectors is None:
+
+        print("loading vectors")
+        if "glove" in vectors_name:
+            vectors = GloVe(vectors_name)
+        elif vectors_name = "fasttext":
+            vectors = FastText()
+        elif vectors is None:
             vectors = Vectors(name=vectors_name, cache=vectors_cache, unk_init=unk_init)
 
+        print("completed vectors loading")
         train, val, test = cls.splits(path)
+        
         cls.TEXT_FIELD.build_vocab(train, val, test, vectors=vectors)
         return BucketIterator.splits((train, val, test), batch_size=batch_size, repeat=False, shuffle=shuffle,
                                      sort_within_batch=True, device=device)
