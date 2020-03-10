@@ -29,6 +29,7 @@ class CustomProcessor(BertProcessor):
             guid = "%s-%s" % (set_type, i)
             text_a = line[1]
             label = line[0]
+            print(line)
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
         return examples
