@@ -88,7 +88,7 @@ class BertProcessor(object):
             return lines
 
     @classmethod
-    def _read_csv(cls, input_file, quotechar=None):
+    def _read_csv(cls, input_file, quotechar='"'):
         """
         Reads a Tab Separated Values (TSV) file
         :param input_file:
