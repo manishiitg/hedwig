@@ -105,7 +105,7 @@ class BertProcessor(object):
             return lines
 
 
-def convert_examples_to_features(examples, max_seq_length, tokenizer, print_examples=False):
+def convert_examples_to_features(examples, max_seq_length, tokenizer, print_examples=True):
     """
     Loads a data file into a list of InputBatch objects
     :param examples:

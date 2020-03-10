@@ -23,7 +23,7 @@ def char_quantize(string, max_length=500):
 
 class Custom(TabularDataset):
     NAME = 'Custom'
-    NUM_CLASSES = 10
+    NUM_CLASSES = 41
     IS_MULTILABEL = False
 
     TEXT_FIELD = Field(batch_first=True, tokenize=clean_string, include_lengths=True)
