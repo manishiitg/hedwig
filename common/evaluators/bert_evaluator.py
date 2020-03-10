@@ -5,7 +5,8 @@ import torch
 import torch.nn.functional as F
 from sklearn import metrics
 from torch.utils.data import DataLoader, SequentialSampler, TensorDataset
-from tqdm import tqdm
+# from tqdm import tqdm
+from tqdm import tqdm_notebook as tqdm
 
 from datasets.bert_processors.abstract_processor import convert_examples_to_features, \
     convert_examples_to_hierarchical_features
