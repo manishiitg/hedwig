@@ -113,6 +113,8 @@ if __name__ == '__main__':
     print('No. of dev instances', len(dev_iter.dataset))
     print('No. of test instances', len(test_iter.dataset))
 
+    break
+
     if args.resume_snapshot:
         if args.cuda:
             model = torch.load(args.resume_snapshot, map_location=lambda storage, location: storage.cuda(args.gpu))
