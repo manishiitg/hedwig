@@ -58,7 +58,7 @@ class Custom(TabularDataset):
 
         print("loading vectors")
         if "glove" in vectors_name:
-            vectors = GloVe('840B')
+            vectors = GloVe('42B')
         elif vectors_name == "fasttext":
             vectors = FastText()
         elif vectors is None:
