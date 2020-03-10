@@ -12,6 +12,7 @@ from datasets.bert_processors.aapd_processor import AAPDProcessor
 from datasets.bert_processors.agnews_processor import AGNewsProcessor
 from datasets.bert_processors.imdb_processor import IMDBProcessor
 from datasets.bert_processors.reuters_processor import ReutersProcessor
+from datasets.bert_processors.custom_processor import CustomProcessor
 from datasets.bert_processors.sogou_processor import SogouProcessor
 from datasets.bert_processors.sst_processor import SST2Processor
 from datasets.bert_processors.yelp2014_processor import Yelp2014Processor
@@ -50,7 +51,8 @@ if __name__ == '__main__':
         'AAPD': AAPDProcessor,
         'AGNews': AGNewsProcessor,
         'Yelp2014': Yelp2014Processor,
-        'Sogou': SogouProcessor
+        'Sogou': SogouProcessor,
+        'Custom' : CustomProcessor,
     }
 
     if args.gradient_accumulation_steps < 1:
