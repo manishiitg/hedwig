@@ -22,7 +22,7 @@ def char_quantize(string, max_length=500):
 
 
 class Custom(TabularDataset):
-    NAME = 'CUSTOM'
+    NAME = 'Custom'
     NUM_CLASSES = 10
     IS_MULTILABEL = False
 
