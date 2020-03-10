@@ -79,6 +79,7 @@ if __name__ == '__main__':
     # pretrained_vocab_path = PRETRAINED_VOCAB_ARCHIVE_MAP[args.model]
 
     pretrained_vocab_path = args.model
+    print("final vocab %s" , pretrained_vocab_path)
     tokenizer = BertTokenizer.from_pretrained(pretrained_vocab_path)
 
     train_examples = None
@@ -90,6 +91,8 @@ if __name__ == '__main__':
 
     # pretrained_model_path = args.model if os.path.isfile(args.model) else PRETRAINED_MODEL_ARCHIVE_MAP[args.model]
     pretrained_model_path = args.model if os.path.isfile(args.model) else args.model
+
+    print("final model %s" , pretrained_model_path)
     model = BertForSequenceClassification.from_pretrained(pretrained_model_path, num_labels=args.num_labels)
 
     if args.fp16:

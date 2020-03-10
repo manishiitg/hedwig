@@ -4,7 +4,9 @@ import os
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, RandomSampler, TensorDataset
-from tqdm import tqdm
+# from tqdm import tqdm
+from tqdm import tqdm_notebook as tqdm
+
 from tqdm import trange
 
 from common.evaluators.bert_evaluator import BertEvaluator
