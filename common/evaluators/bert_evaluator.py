@@ -48,6 +48,7 @@ class BertEvaluator(object):
         padded_input_mask = torch.tensor(unpadded_input_mask, dtype=torch.long)
         padded_segment_ids = torch.tensor(unpadded_segment_ids, dtype=torch.long)
         label_ids = torch.tensor([f.label_id for f in eval_features], dtype=torch.long)
+        
 
         eval_data = TensorDataset(padded_input_ids, padded_input_mask, padded_segment_ids, label_ids)
         eval_sampler = SequentialSampler(eval_data)
@@ -74,7 +75,8 @@ class BertEvaluator(object):
                 loss = F.binary_cross_entropy_with_logits(logits, label_ids.float(), size_average=False)
             else:
                 predicted_labels.extend(torch.argmax(logits, dim=1).cpu().detach().numpy())
-                target_labels.extend(torch.argmax(label_ids, dim=1).cpu().detach().numpy())
+                # target_labels.extend(torch.argmax(label_ids, dim=1).cpu().detach().numpy())
+                target_labels.extend(label_ids.cpu().detach().numpy())
                 loss = F.cross_entropy(logits, torch.argmax(label_ids, dim=1))
 
             if self.args.n_gpu > 1:
@@ -92,7 +94,4 @@ class BertEvaluator(object):
         recall = metrics.recall_score(target_labels, predicted_labels, average='micro')
         f1 = metrics.f1_score(target_labels, predicted_labels, average='micro')
         avg_loss = total_loss / nb_eval_steps
-        print(predicted_labels)
-        print(target_labels)
-        print([accuracy, precision, recall, f1, avg_loss])
         return [accuracy, precision, recall, f1, avg_loss], ['accuracy', 'precision', 'recall', 'f1', 'avg_loss']
