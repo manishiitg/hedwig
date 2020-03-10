@@ -13,6 +13,8 @@ def get_args():
     parser.add_argument('--trained-model', default=None, type=str)
     parser.add_argument('--fp16', action='store_true', help='use 16-bit floating point precision')
 
+    parser.add_argument('--target-classes', type=int, default=8)
+
     parser.add_argument('--max-seq-length',
                         default=128,
                         type=int,

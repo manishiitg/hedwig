@@ -64,7 +64,10 @@ if __name__ == '__main__':
     args.batch_size = args.batch_size // args.gradient_accumulation_steps
     args.device = device
     args.n_gpu = n_gpu
-    args.num_labels = dataset_map[args.dataset].NUM_CLASSES
+    if args.dataset == "Custom":
+        args.num_labels = args.target_classes
+    else:
+        args.num_labels = dataset_map[args.dataset].NUM_CLASSES
     args.is_multilabel = dataset_map[args.dataset].IS_MULTILABEL
 
     if not args.trained_model:
