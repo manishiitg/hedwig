@@ -113,7 +113,7 @@ if __name__ == '__main__':
     print('No. of dev instances', len(dev_iter.dataset))
     print('No. of test instances', len(test_iter.dataset))
 
-    break
+    return
 
     if args.resume_snapshot:
         if args.cuda:
