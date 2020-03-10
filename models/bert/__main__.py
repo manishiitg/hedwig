@@ -88,7 +88,8 @@ if __name__ == '__main__':
         num_train_optimization_steps = int(
             len(train_examples) / args.batch_size / args.gradient_accumulation_steps) * args.epochs
 
-    pretrained_model_path = args.model if os.path.isfile(args.model) else PRETRAINED_MODEL_ARCHIVE_MAP[args.model]
+    # pretrained_model_path = args.model if os.path.isfile(args.model) else PRETRAINED_MODEL_ARCHIVE_MAP[args.model]
+    pretrained_model_path = args.model if os.path.isfile(args.model) else args.model
     model = BertForSequenceClassification.from_pretrained(pretrained_model_path, num_labels=args.num_labels)
 
     if args.fp16:
