@@ -10,15 +10,15 @@ class CustomProcessor(BertProcessor):
 
     def get_train_examples(self, data_dir):
         return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, 'CUSTOM', 'train.csv')), 'train')
+            self._read_csv(os.path.join(data_dir, 'CUSTOM', 'train.csv')), 'train')
 
     def get_dev_examples(self, data_dir):
         return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, 'CUSTOM', 'dev.csv')), 'dev')
+            self._read_csv(os.path.join(data_dir, 'CUSTOM', 'dev.csv')), 'dev')
 
     def get_test_examples(self, data_dir):
         return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, 'CUSTOM', 'test.csv')), 'test')
+            self._read_csv(os.path.join(data_dir, 'CUSTOM', 'test.csv')), 'test')
 
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""

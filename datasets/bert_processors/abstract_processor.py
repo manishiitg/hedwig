@@ -87,6 +87,23 @@ class BertProcessor(object):
                 lines.append(line)
             return lines
 
+    @classmethod
+    def _read_csv(cls, input_file, quotechar=None):
+        """
+        Reads a Tab Separated Values (TSV) file
+        :param input_file:
+        :param quotechar:
+        :return:
+        """
+        with open(input_file, "r") as f:
+            reader = csv.reader(f, delimiter=",", quotechar=quotechar)
+            lines = []
+            for line in reader:
+                if sys.version_info[0] == 2:
+                    line = list(str(cell, 'utf-8') for cell in line)
+                lines.append(line)
+            return lines
+
 
 def convert_examples_to_features(examples, max_seq_length, tokenizer, print_examples=False):
     """
