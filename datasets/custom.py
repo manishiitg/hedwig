@@ -37,7 +37,7 @@ class Custom(TabularDataset):
     def splits(cls, path, train=os.path.join('CUSTOM', 'train.csv'),
                validation=os.path.join('CUSTOM', 'dev.csv'),
                test=os.path.join('CUSTOM', 'test.csv'), **kwargs):
-        return super(CUSTOM, cls).splits(
+        return super(Custom, cls).splits(
             path, train=train, validation=validation, test=test,
             format='csv', fields=[('label', cls.LABEL_FIELD), ('text', cls.TEXT_FIELD)]
         )
