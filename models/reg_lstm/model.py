@@ -30,12 +30,13 @@ class RegLSTM(nn.Module):
             self.static_embed = nn.Embedding.from_pretrained(dataset.TEXT_FIELD.vocab.vectors, freeze=True)
         elif config.mode == 'non-static':
             self.non_static_embed = nn.Embedding.from_pretrained(dataset.TEXT_FIELD.vocab.vectors, freeze=False)
+            if torch.cuda.is_available():
+                self.non_static_embed.cuda()
         else:
             print("Unsupported Mode")
             exit()
-        if torch.cuda.is_available():
-            self.embed.cuda()
-            
+        
+
         self.lstm = nn.LSTM(config.words_dim, config.hidden_dim, dropout=config.dropout, num_layers=config.num_layers,
                             bidirectional=self.is_bidirectional, batch_first=True)
 
