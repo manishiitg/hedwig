@@ -3,7 +3,7 @@ import time
 
 import numpy as np
 import torch
-from transformers import AdamW, BertForSequenceClassification, BertTokenizer, WarmupLinearSchedule
+from transformers import AdamW, BertForSequenceClassification, BertTokenizer, get_linear_schedule_with_warmup as WarmupLinearSchedule
 
 from common.constants import *
 from common.evaluators.bert_evaluator import BertEvaluator

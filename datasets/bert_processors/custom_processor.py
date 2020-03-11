@@ -5,8 +5,8 @@ from datasets.bert_processors.abstract_processor import BertProcessor, InputExam
 
 class CustomProcessor(BertProcessor):
     NAME = 'Custom'
-    NUM_CLASSES = 40
-    IS_MULTILABEL = True
+    NUM_CLASSES = 8
+    IS_MULTILABEL = False
 
     def get_train_examples(self, data_dir):
         return self._create_examples(
