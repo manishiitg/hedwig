@@ -23,11 +23,11 @@ def char_quantize(string, max_length=500):
 
 class Custom(TabularDataset):
     NAME = 'Custom'
-    NUM_CLASSES = 41
-    IS_MULTILABEL = False
+    NUM_CLASSES = 40
+    IS_MULTILABEL = True
 
     TEXT_FIELD = Field(batch_first=True, tokenize=clean_string, include_lengths=True)
-    LABEL_FIELD = Field(sequential=False, use_vocab=False, batch_first=True, preprocessing=process_labels)
+    LABEL_FIELD = Field(sequential=False, use_vocab=False, batch_first=True)
 
     @staticmethod
     def sort_key(ex):
@@ -66,6 +66,7 @@ class Custom(TabularDataset):
 
         print("completed vectors loading")
         train, val, test = cls.splits(path)
+        
 
         cls.TEXT_FIELD.build_vocab(train, val, test, vectors=vectors)
         return BucketIterator.splits((train, val, test), batch_size=batch_size, repeat=False, shuffle=shuffle,
