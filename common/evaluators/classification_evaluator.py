@@ -42,8 +42,8 @@ class ClassificationEvaluator(Evaluator):
                 target_labels.extend(batch.label.cpu().detach().numpy())
                 total_loss += F.binary_cross_entropy_with_logits(scores, batch.label.float(), size_average=False).item()
             else:
-                predicted_labels.extend(torch.argmax(scores, dim=1).cpu().detach().numpy())
-                # target_labels.extend(torch.argmax(batch.label, dim=1).cpu().detach().numpy())
+                # predicted_labels.extend(torch.argmax(scores, dim=1).cpu().detach().numpy())
+                target_labels.extend(torch.argmax(batch.label, dim=1).cpu().detach().numpy())
                 target_labels.extend(batch.label.cpu().detach().numpy())
                 total_loss += F.cross_entropy(scores, torch.argmax(batch.label, dim=1), size_average=False).item()
 
@@ -53,6 +53,8 @@ class ClassificationEvaluator(Evaluator):
 
         predicted_labels = np.array(predicted_labels)
         target_labels = np.array(target_labels)
+        print(predicted_labels)
+        print(target_labels)
         accuracy = metrics.accuracy_score(target_labels, predicted_labels)
         precision = metrics.precision_score(target_labels, predicted_labels, average='micro')
         recall = metrics.recall_score(target_labels, predicted_labels, average='micro')

@@ -24,7 +24,7 @@ def char_quantize(string, max_length=500):
 class Custom(TabularDataset):
     NAME = 'Custom'
     NUM_CLASSES = 40
-    IS_MULTILABEL = True
+    IS_MULTILABEL = False
 
     TEXT_FIELD = Field(batch_first=True, tokenize=clean_string, include_lengths=True)
     LABEL_FIELD = Field(sequential=False, use_vocab=False, batch_first=True)
