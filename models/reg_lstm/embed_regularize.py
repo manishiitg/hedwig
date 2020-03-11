@@ -50,4 +50,6 @@ def embedded_dropout(embed, words, dropout=0.1, scale=None):
     padding_idx, embed.max_norm, embed.norm_type,
     embed.scale_grad_by_freq, embed.sparse
   )
+  if torch.cuda.is_available():
+    X.cuda()
   return X
