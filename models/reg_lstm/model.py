@@ -33,7 +33,9 @@ class RegLSTM(nn.Module):
         else:
             print("Unsupported Mode")
             exit()
-
+        if torch.cuda.is_available():
+            self.embed.cuda()
+            
         self.lstm = nn.LSTM(config.words_dim, config.hidden_dim, dropout=config.dropout, num_layers=config.num_layers,
                             bidirectional=self.is_bidirectional, batch_first=True)
 
