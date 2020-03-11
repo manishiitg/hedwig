@@ -74,8 +74,7 @@ class BertEvaluator(object):
                 target_labels.extend(label_ids.cpu().detach().numpy())
                 loss = F.binary_cross_entropy_with_logits(logits, label_ids.float(), size_average=False)
             else:
-                predicted_labels.extend(torch.argmax(logits, dim=1).cpu().detach().numpy())
-                # target_labels.extend(torch.argmax(label_ids, dim=1).cpu().detach().numpy())
+                target_labels.extend(torch.argmax(label_ids, dim=1).cpu().detach().numpy())
                 target_labels.extend(label_ids.cpu().detach().numpy())
                 loss = F.cross_entropy(logits, torch.argmax(label_ids, dim=1))
 
